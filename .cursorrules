@@ -1,0 +1,31 @@
+# Kay-Bee Project Configuration for Cursor
+
+## Project Overview
+This is a modern Next.js 15 application built with TypeScript, using the App Router and React 19. The project follows modern development practices with a focus on performance and developer experience.
+
+## Tech Stack & Frameworks
+
+### Core Technologies
+- **Next.js 15** with App Router (using `app/` directory structure)
+- **React 19** with latest features
+- **TypeScript 5** for type safety
+- **Tailwind CSS 4** for styling (with CSS variables)
+- **Turbopack** for fast development builds
+
+### UI & Components
+- **shadcn/ui** components with style variant. When adding new components always use the shadcn CLI (like `npx shadcn@latest add ...`)
+- **Lucide React** for icons
+- **class-variance-authority** for component variants
+- **clsx** and **tailwind-merge** for conditional styling
+- **tw-animate-css** for animations
+
+### Backend & Database
+- **Supabase** for backend services and database
+- Local Supabase development setup with config.toml
+
+### Development Tools
+- **ESLint** with Next.js configuration
+- **PostCSS** with Tailwind CSS
+- **TypeScript** strict mode
+
+## Project Structure & Conventions
