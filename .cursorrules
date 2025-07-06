@@ -22,10 +22,13 @@ This is a modern Next.js 15 application built with TypeScript, using the App Rou
 ### Backend & Database
 - **Supabase** for backend services and database
 - Local Supabase development setup with config.toml
+- Don't modify already existing migration files
+- Prefer `npx supabase migration up` to apply migrations
 
 ### Development Tools
 - **ESLint** with Next.js configuration
 - **PostCSS** with Tailwind CSS
 - **TypeScript** strict mode
 
-## Project Structure & Conventions
+## Other notes
+ - Don't attempt to start the development server. I'll be handling that.
