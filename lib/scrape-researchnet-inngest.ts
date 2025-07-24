@@ -1,6 +1,6 @@
 import { inngest } from "./inngest";
 import { ChatOpenAI } from "@langchain/openai";
-import { PlaywrightWebBaseLoader } from "@langchain/community/document_loaders/web/playwright";
+import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { StringOutputParser } from "@langchain/core/output_parsers";
@@ -112,11 +112,8 @@ export const scrapeResearchnetInngest = inngest.createFunction(
     const { id, url } = event.data;
     if (!id || !url) throw new Error("Missing id or url");
 
-    // 1. Scrape the website
-    const loader = new PlaywrightWebBaseLoader(url, {
-      launchOptions: { headless: true },
-      gotoOptions: { waitUntil: "networkidle" },
-    });
+    // 1. Scrape the website using Cheerio (no browser required)
+    const loader = new CheerioWebBaseLoader(url);
     const docs = await loader.load();
     const fullContent = docs[0].pageContent;
     const mainContent = extractMainContent(fullContent);
