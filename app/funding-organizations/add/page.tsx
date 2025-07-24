@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
@@ -95,8 +94,8 @@ export default function AddFundingOrganizationPage() {
               Add New Funding Organization
             </CardTitle>
             <CardDescription>
-              Enter the funding organization's name and description to add it to
-              the system.
+              Enter the funding organization&apos;s name and description to add
+              it to the system.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -136,8 +135,8 @@ export default function AddFundingOrganizationPage() {
                         />
                       </FormControl>
                       <FormDescription>
-                        Optional description of the funding organization's
-                        mission and focus areas.
+                        This will be visible to other users. Don&apos;t use real
+                        organization names unless you have permission.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>

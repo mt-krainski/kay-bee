@@ -6,7 +6,7 @@ import { scrapeResearchnetInngest } from "@/lib/scrape-researchnet-inngest";
 const sendWelcomeEmail = inngest.createFunction(
   { id: "send-welcome-email", name: "Send Welcome Email" },
   { event: "user/created" },
-  async ({ event, step }) => {
+  async ({ event }) => {
     // In a real app, you would send an email here
     console.log("starting")
     await new Promise((resolve) => setTimeout(resolve, 120_000));

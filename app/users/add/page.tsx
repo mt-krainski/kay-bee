@@ -11,11 +11,9 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -92,7 +90,8 @@ export default function AddUserPage() {
               Add New User
             </CardTitle>
             <CardDescription>
-              Enter the user's name and email address to create a new account.
+              Enter the user&apos;s name and email address to create a new
+              account.
             </CardDescription>
           </CardHeader>
           <CardContent>

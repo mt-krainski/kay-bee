@@ -7,7 +7,7 @@ import { StringOutputParser } from "@langchain/core/output_parsers";
 
 // Helper: Extract main content from HTML
 function extractMainContent(html: string): string {
-  let content = html;
+  const content = html;
   const mainMatch = content.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
   if (mainMatch) return mainMatch[1];
   const bodyMatch = content.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
@@ -64,7 +64,7 @@ function splitContent(content: string) {
 }
 
 // Helper: Parse a section into markdown
-async function parseSection(section: string, model: ChatOpenAI, sectionIndex: number, totalSections: number) {
+async function parseSection(section: string, model: ChatOpenAI, sectionIndex: number) {
   const prompt = PromptTemplate.fromTemplate(`
 You are an expert at parsing and formatting web content into clean, well-structured markdown.
 Please parse the following section of a ResearchNet funding opportunity page and convert it into properly formatted markdown.
@@ -95,7 +95,7 @@ IMPORTANT: Return only the formatted markdown content. Do NOT wrap your response
     const result = await chain.invoke({ section });
     const cleanResult = result.replace(/^```markdown\s*\n?/, '').replace(/\n?```\s*$/, '');
     return cleanResult;
-  } catch (error) {
+  } catch {
     return `## Section ${sectionIndex + 1}\n\n${section}\n\n*[Error occurred during parsing]*\n`;
   }
 }
@@ -108,7 +108,7 @@ function createFinalDocument(parsedSections: string[]) {
 export const scrapeResearchnetInngest = inngest.createFunction(
   { id: "scrape-researchnet", name: "Scrape ResearchNet and Save to Supabase" },
   { event: "call_for_proposal.scrape" },
-  async ({ event, step }) => {
+  async ({ event }) => {
     const { id, url } = event.data;
     if (!id || !url) throw new Error("Missing id or url");
 
@@ -132,7 +132,7 @@ export const scrapeResearchnetInngest = inngest.createFunction(
     });
     const parsedSections: string[] = [];
     for (let i = 0; i < sections.length; i++) {
-      const parsedSection = await parseSection(sections[i], model, i, sections.length);
+      const parsedSection = await parseSection(sections[i], model, i);
       parsedSections.push(parsedSection);
     }
     const finalDocument = createFinalDocument(parsedSections);
