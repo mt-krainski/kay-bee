@@ -1,4 +1,8 @@
-# Kay-Bee Project Configuration for Cursor
+---
+alwaysApply: true
+---
+
+# Kay-Bee Project
 
 ## Project Overview
 This is a modern Next.js 15 application built with TypeScript, using the App Router and React 19. The project follows modern development practices with a focus on performance and developer experience.
@@ -32,3 +36,6 @@ This is a modern Next.js 15 application built with TypeScript, using the App Rou
 
 ## Other notes
  - Don't attempt to start the development server. I'll be handling that.
+ - Don't edit the readme or write additional documentation files unless I explicitly ask for it.
+ - You don't have access to my .env file but assume it exists. If some modifications are needed, just let me know.
+ 
